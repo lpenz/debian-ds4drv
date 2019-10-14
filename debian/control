@@ -1,0 +1,23 @@
+Source: ds4drv
+Section: python
+Priority: optional
+Maintainer: Leandro Lisboa Penz <lpenz@lpenz.org>
+Build-Depends: debhelper (>= 11), python, dh-python, python-setuptools (>= 33)
+Standards-Version: 4.3.0
+Homepage: https://github.com/chrippa/ds4drv
+Vcs-Browser: https://github.com/chrippa/ds4drv
+Vcs-Git: git://github.com/chrippa/ds4drv
+
+Package: ds4drv
+Architecture: all
+Depends: python, ${python:Depends}, ${misc:Depends}, python-evdev (>= 0.3.0), python-pyudev (>= 0.16)
+Description: Sony DualShock 4 userspace driver for Linux
+ Features:
+   - Option to emulate the Xbox 360 controller for compatibility with Steam
+     games
+   - Setting the LED color
+   - Reminding you about low battery by flashing the LED
+   - Using the trackpad as a mouse
+   - Custom mappings, map buttons and sticks to whatever mouse, key or joystick
+     action you want
+   - Settings profiles that can be cycled through with a button binding
