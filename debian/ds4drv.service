@@ -1,0 +1,9 @@
+[Unit]
+Description=ds4drv Sony DualShock 4 userspace driver
+After=bluetooth.service
+
+[Service]
+ExecStart=/usr/bin/ds4drv --led 000008 --next-controller --led 080000
+
+[Install]
+WantedBy=multi-user.target
