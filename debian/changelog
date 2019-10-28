@@ -1,3 +1,9 @@
+ds4drv (0.5.1-2) UNRELEASED; urgency=low
+
+  * Add systemd unit file ds4drv.service
+
+ -- Leandro Lisboa Penz <lpenz@lpenz.org>  Mon, 28 Oct 2019 20:18:04 +0000
+
 ds4drv (0.5.1-1) UNRELEASED; urgency=low
 
   * Initial release
