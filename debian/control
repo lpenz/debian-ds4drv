@@ -2,15 +2,16 @@ Source: ds4drv
 Section: python
 Priority: optional
 Maintainer: Leandro Lisboa Penz <lpenz@lpenz.org>
-Build-Depends: debhelper (>= 11), python, dh-python, python-setuptools (>= 33)
+Build-Depends: debhelper (>= 11), python3, dh-python, python3-setuptools (>= 33), python3-evdev (>= 1.1), python3-pyudev (>= 0.20)
 Standards-Version: 4.3.0
 Homepage: https://github.com/chrippa/ds4drv
 Vcs-Browser: https://github.com/chrippa/ds4drv
 Vcs-Git: git://github.com/chrippa/ds4drv
+X-Python3-Version: >= 3.7
 
 Package: ds4drv
 Architecture: all
-Depends: python, ${python:Depends}, ${misc:Depends}, python-evdev (>= 0.3.0), python-pyudev (>= 0.16)
+Depends: python, ${python3:Depends}, ${misc:Depends}, python3-evdev (>= 1.1), python3-pyudev (>= 0.20)
 Description: Sony DualShock 4 userspace driver for Linux
  Features:
    - Option to emulate the Xbox 360 controller for compatibility with Steam
