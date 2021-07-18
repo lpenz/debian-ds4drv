@@ -1,0 +1,6 @@
+---
+name: gbp-raspbian
+description: Build debian package with git-build-package for raspbian
+runs:
+  using: docker
+  image: Dockerfile

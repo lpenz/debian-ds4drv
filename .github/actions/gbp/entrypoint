@@ -1,0 +1,19 @@
+#!/bin/bash
+
+OUTPUT_DIRECTORY=${INPUT_OUTPUT_DIRECTORY:-.}
+
+set -e -x
+
+mk-build-deps \
+    -i -r \
+    --tool='apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes' \
+    "$PWD/debian/control"
+
+gbp buildpackage --git-ignore-branch -us -uc
+
+mkdir -p "$OUTPUT_DIRECTORY"
+cp -v ../*.deb ../*.dsc ../*.changes ../*.debian.tar.xz ../*.orig.tar.gz "$OUTPUT_DIRECTORY"
+chmod -R a+w "$OUTPUT_DIRECTORY"
+
+dpkg --info "$OUTPUT_DIRECTORY"/*.deb
+dpkg --contents "$OUTPUT_DIRECTORY"/*.deb

@@ -1,0 +1,50 @@
+---
+name: CI
+on: [ push, pull_request ]
+jobs:
+  gbp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/gbp
+  gbp-raspbian:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker/setup-qemu-action@v1.2.0
+      - uses: docker/setup-buildx-action@v1.5.1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/gbp-raspbian
+  deploy:
+    needs: [ gbp, gbp-raspbian ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/gbp
+      - uses: docker://lpenz/ghaction-packagecloud:v0.3
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          repository: debian/debian/buster
+        env:
+          PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
+  deploy-raspbian:
+    needs: [ gbp, gbp-raspbian ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker/setup-qemu-action@v1.2.0
+      - uses: docker/setup-buildx-action@v1.5.1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/gbp-raspbian
+      - uses: docker://lpenz/ghaction-packagecloud:v0.3
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          repository: raspbian/debian/buster
+        env:
+          PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}

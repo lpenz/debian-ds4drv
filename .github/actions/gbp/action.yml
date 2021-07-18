@@ -1,0 +1,6 @@
+---
+name: gbp
+description: Build debian package with git-build-package
+runs:
+  using: docker
+  image: Dockerfile
