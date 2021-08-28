@@ -9,6 +9,9 @@ mk-build-deps \
     --tool='apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes' \
     "$PWD/debian/control"
 
+# Apparently, mk-build-deps -r doesn't work anymore
+git clean -xfd
+
 gbp buildpackage --git-ignore-branch -us -uc
 
 mkdir -p "$OUTPUT_DIRECTORY"

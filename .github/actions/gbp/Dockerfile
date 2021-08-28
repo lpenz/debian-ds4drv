@@ -1,4 +1,4 @@
-FROM lpenz/debian-buster-amd64-minbase
+FROM lpenz/debian-bullseye-amd64-minbase
 
 # install debian packages:
 ENV DEBIAN_FRONTEND noninteractive

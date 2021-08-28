@@ -1,4 +1,4 @@
-FROM lpenz/raspbian-buster-armhf-minbase
+FROM lpenz/raspbian-bullseye-armhf-minbase
 
 # install debian packages:
 ENV DEBIAN_FRONTEND noninteractive
