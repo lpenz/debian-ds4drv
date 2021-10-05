@@ -1,3 +1,9 @@
+ds4drv (0.5.1-5) UNRELEASED; urgency=low
+
+  * Fix repository in CI
+
+ -- Leandro Lisboa Penz <lpenz@lpenz.org>  Tue, 05 Oct 2021 19:34:37 +0100
+
 ds4drv (0.5.1-4) UNRELEASED; urgency=low
 
   * Deploy in bullseye
